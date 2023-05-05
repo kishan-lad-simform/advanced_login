@@ -1,0 +1,41 @@
+<div class="container-sm text-center"><br>
+  <div class="card">
+  <h2> Add User </h2> <br>
+  <%= form_with model: @user do |form| %>
+
+    <div class="row">
+      <div class="col-3">
+         <%= form.label 'Username' %><br/>
+      </div>
+      <div class="col-6">
+        <%= form.text_field :username, class: "form-control", required: true %><br>
+        <%= custom_error(@user, :username) %>
+      </div>
+    </div> <br><br>
+
+    <div class="row">
+      <div class="col-3">
+        <%= form.label 'Email' %><br/>
+      </div>
+      <div class="col-6">
+        <%= form.email_field :email, class: "form-control", required: true %><br>
+        <%= custom_error(@user, :email) %>
+      </div>
+    </div> <br><br>
+
+
+  <div class="row">
+      <div class="col-3">
+        <%= form.label 'Password' %><br/>
+      </div>
+      <div class="col-6">
+        <%= form.password_field :password, class: "form-control", required: true %> <br>
+        <%= custom_error(@user, :password) %><br><br>
+      </div>
+    </div>
+
+    <%= form.submit 'Add User', class: "btn btn-primary" %><br><br>
+    <%= link_to 'Back', login_path  %>
+  <% end %>
+  </div>
+</div>

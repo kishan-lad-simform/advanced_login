@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :admins
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :users
+  resources :posts, only: :index 
+  resources :dashboards, only: :index
+
+  get '/login', to: 'users#check_login'
+  post '/login', to: 'users#login'
+  get '/logout', to: 'users#logout'
+  root 'dashboards#index'
 end
